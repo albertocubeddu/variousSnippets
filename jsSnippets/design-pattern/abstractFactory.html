@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>Abstract Factory Pattern JS</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// This pattern provide an interface for creating families of realted or dependant object without specifying their concrete classes.
+
+	//AbstractFactory: (not possible in JS no abstract class can be defined)
+
+	//Concrete Factory: a factory object that create new object. 
+	//Concrete Product : the object create by the factory
+
+	//AbstractProducts : (not possible in JS no abstract class can be defined)
+
+
+	// ***************** BOARD **************************
+	// CONCRETE PRODUCT
+
+	var Board = function(name,brand){
+		this.name = name;
+		this.brand = brand;
+	}
+
+	// This is theorically an "ABSTRACT FUNCTION"
+	Board.prototype.say = function() {
+		console.log("I am an "+this.brand+" Boards model: "+ this.name);
+	};
+
+	// **************************************************
+
+	// ***************** FACTORY **************************
+	
+	// CONCRETE FACTORY (1)
+ 	var ClaytonBoardFactory = function(){
+ 		this.brand = "clayton";
+ 	}
+
+	// This is theorically an "ABSTRACT FUNCTION"
+ 	ClaytonBoardFactory.prototype.create = function(name) {
+ 		return new Board(name,this.brand);
+ 	};
+
+ 	// CONCRETE FACTORY (2)
+ 	var NexoBoardFactory = function(){
+ 		this.brand = "nexo";
+ 	}
+
+	// This is theorically an "ABSTRACT FUNCTION"
+ 	NexoBoardFactory.prototype.create = function(name) {
+ 		return new Board(name,this.brand);
+ 	};
+     
+    
+    var board = [];
+    var claytonBoardFactory = new ClaytonBoardFactory();
+    var nexoBoardFactory = new NexoBoardFactory();
+
+    board.push(nexoBoardFactory.create("bull's eye"));
+    board.push(claytonBoardFactory.create("Mongrel"));
+
+    board.forEach(function (element, index) {
+    	element.say()
+   	});
+
+
+	</script>
+
+</body>
+</html>

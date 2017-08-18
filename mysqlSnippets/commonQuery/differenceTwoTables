@@ -1,0 +1,4 @@
+#export the table with the value that you want to compare
+sort file1 file2 | uniq -u > file3
+
+#You can use even a query but if the database is huge this is a good and FAST method!
